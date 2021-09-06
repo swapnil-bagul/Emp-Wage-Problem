@@ -1,10 +1,14 @@
 #!/bin/bash -x
-TotalSalary=0
-WagePerHr=20
-WorkingHr=i
+function myfunc(){
 
-for ((i=1; WorkingHr<=100; i++ ))
-do
-        Salary=$(($WorkingHr*$WagePerHr))
-        echo "TotalSalary= $Salary "
-done
+TotalWorkHr=$(($NumWorkingDay*$WorkHrPerDay))
+
+}
+
+read -p "Enter Total Working Day for part time: " NumWorkingDay
+WorkHrPerDay=4
+myfunc $NumWorkingDay
+
+read -p "Enter Total Working Day for full time: " NumWorkingDay
+WorkHrPerDay=8
+myfunc $NumWorkingDay
