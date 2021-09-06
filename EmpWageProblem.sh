@@ -1,20 +1,23 @@
 #!/bin/bash -x
-EmpFullTime=1
-EmpPartTime=2
-EmpAbsent=0
+isFullTime=1
+isPartTime=2
+iSAbsent=0
+TotalSalary=0
 WagePerHr=20
+NumWorkingDay=20
 
+for((i=1; i<=$NumWorkingDay; i++))
+do
 check=$((RANDOM%3))
 
 case $check in
-
-1)      WorkingHr=8
+$isFullTime) WorkingHr=8
 ;;
-2)      WorkingHr=4
+$isPartTime) WorkingHr=4
 ;;
-*)      WorkingHr=0
+*)           WorkingHr=0
 ;;
-
 esac
-
-echo "Employee Daily Wage is $(($WorkingHr*$WagePerHr))"
+        Salary=$(($WorkingHr*$WagePerHr))
+        TotalSalary=$(($TotalSalary+$Salary))
+done
