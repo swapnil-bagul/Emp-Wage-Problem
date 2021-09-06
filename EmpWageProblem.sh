@@ -1,13 +1,14 @@
 #!/bin/bash -x
-#Employee present absent status
+EmpPresent=1
+EmpAbsent=0
+WagePerHr=20
 
-        check=$((RANDOM%2))
-
-if [ $check -eq 0 ]
+check=$((RANDOM%2))
+        if [ $check -eq 1 ]
 then
-        status=present
+        FullDayHr=8
 else
-        status=absent
+        FullDayHr=0
 fi
 
-echo "Employee is $status"
+echo "Employee Daily Wage is = $(($FullDayHr*$WagePerHr))"
