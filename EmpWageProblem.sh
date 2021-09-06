@@ -1,14 +1,36 @@
 #!/bin/bash -x
-function myfunc(){
+isFullTime=1
+isPartTime=2
+isAbsent=0
+WagePerHr=20
+TotalWorkingday=20
+TotalWage=0
+Day=i
+declare -a DailyWage
+declare -a TotalWage
+for((i=1; i<=20; i++))
 
-TotalWorkHr=$(($NumWorkingDay*$WorkHrPerDay))
+do
 
-}
+check=$((RANDOM%3))
 
-read -p "Enter Total Working Day for part time: " NumWorkingDay
-WorkHrPerDay=4
-myfunc $NumWorkingDay
+case $check in
+$isPartTime)    WorkingHr=4
+;;
+$isFullTime)    WorkingHr=8
+;;
+*)              WorkingHr=0
+;;
+esac
+                Wage=$(($WorkingHr*$WagePerHr))
+                DailyWage[i]="$Wage"
+                TotalWage=$(($TotalWage+$Wage))
+                TotalWage[i]="$TotalWage"
+done
+                echo "Daily Wage is "${DailyWage[@]}" "
+                echo "Total wage is "${TotalWage[@]}" "
 
-read -p "Enter Total Working Day for full time: " NumWorkingDay
-WorkHrPerDay=8
-myfunc $NumWorkingDay
+
+
+
+
